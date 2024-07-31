@@ -1,0 +1,32 @@
+[
+  {
+    "type": "header",
+    "bbox": [
+      2126,
+      192,
+      2166,
+      218
+    ],
+    "text": "40"
+  },
+  {
+    "type": "table",
+    "bbox": [
+      237,
+      270,
+      2128,
+      2791
+    ],
+    "text": ""
+  },
+  {
+    "type": "reference",
+    "bbox": [
+      226,
+      2832,
+      2159,
+      2950
+    ],
+    "text": "Table 10. Linear probe performance of various pre-trained models over 27 datasets. Scores within the 99.5% Clopper-Pearson confidenceinterval of each dataset's top score are shown in bold.* We updated the STL10 scores from the previous version of this paper after fixing a CUDA-related bug."
+  }
+]

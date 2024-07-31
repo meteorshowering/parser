@@ -1,0 +1,15 @@
+Figure 22. CLIP's zero-shot performance compared to linear-probe ResNet performance
+# extract feature representations of each modalityI-f = image_encoder(I) #[n, d-i]T_f = text_encoder(T) #[n, d-t]
+Model GFLOPs
+Zero-Shot CLIP vs. Linear Probe on ResNet50
+# of labeled training examples per class
+# of labeled examples per classrequired to match zero-shot
+Forward-pass GFLOPs/image 
+¡÷ Score (%)Logistic Regression on CLIP vs. EfficientNet L2 NS
+ Change from zero-shot ImageNet classifier accuracy (%) 
+ Average on class subsampled ImageNet (top-1, %)
+7075808590 Average on class subsampled ImageNet (top-1, %)
+Figure 19. Two example images from the Rendered SST2 dataset
+Figure 20. Linear probe performance plotted for each of the 27 datasets, using the data from Table 10.
+Figure 21. Visualization of predictions from 36 CLIP zero-shot classifiers. All examples are random with the exception of reselectingHateful Memes to avoid offensive content. The predicted probability of the top 5 classes is shown along with the text used to representthe class. When more than one template is used, the first template is shown. The ground truth label is colored green while an incorrectprediction is colored orange.
+Figure 22. CLIP's zero-shot performance compared to linear-probe ResNet performance
