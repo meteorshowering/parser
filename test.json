@@ -2,786 +2,91 @@
   {
     "type": "header",
     "bbox": [
-      485,
-      193,
-      1367,
-      224
-    ],
-    "text": "Learning Transferable Visual Models From Natural Language Supervision"
-  },
-  {
-    "type": "figure",
-    "bbox": [
-      200,
-      257,
-      1161,
-      1022
-    ],
-    "text": "FER2013184CIFAR10Foodl01OxfordPetsCountry211PCamSST24.4Kinetics700STL10CIFAR1002.0StanfordCaMNISTSUN3973.9Caltech101KITTI DistanUCF101CBirdsnaDTDFGVCAi.0GTSRB.5RESISC451.5Mean:n.20.8EuroSATFlowers102 0.9507510012515025175\u3000200# of labeled examples per class"
-  },
-  {
-    "type": "figure_caption",
-    "bbox": [
-      583,
-      1015,
-      977,
-      1064
-    ],
-    "text": "# of labeled examples per classrequired to match zero-shot"
-  },
-  {
-    "type": "text",
-    "bbox": [
-      218,
-      1123,
-      1158,
-      1507
-    ],
-    "text": "Figure 7. The data efficiency of zero-shot transfer varieswidely. Calculating the number of labeled examples per classa linear classifier on the same CLIP feature space requires to matchthe performance of the zero-shot classifier contextualizes the ef-fectiveness of zero-shot transfer. Values are estimated based onlog-linear interpolation of 1, 2, 4, 8, 16-shot and fully supervisedresults. Performance varies widely from still underperforming a one-shot classifier on two datasets to matching an estimated 184labeled examples per class."
-  },
-  {
-    "type": "text",
-    "bbox": [
-      217,
-      1588,
-      1157,
-      2052
-    ],
-    "text": "have widely varying efficiency per dataset from less than 1labeled example per class to 184. Two datasets, Flowers102and EuroSAT underperform one-shot models. Half of thedatasets require less than 5 examples per class with a medianof 5.4. However, the mean estimated data efficiency is 20.8 examples per class. This is due to the 20% of datasetswhere supervised classifiers require many labeled examplesper class in order to match performance. On ImageNet,zero-shot CLIP matches the performance of a 16-shot linear classifier trained on the same feature space."
-  },
-  {
-    "type": "text",
-    "bbox": [
-      220,
-      2092,
-      1161,
-      2871
-    ],
-    "text": "If we assume that evaluation datasets are large enough thatthe parameters of linear classifiers trained on them are wellestimated, then, because CLIP's zero-shot classifier is also a linear classifier, the performance of the fully supervisedclassifiers roughly sets an upper bound for what zero-shottransfer can achieve. In Figure 8 we compare CLIP's zero-shot performance with fully supervised linear classifiersacross datasets. The dashed, y =  line represents an \u201cop-timal\u2019 zero-shot classifier that matches the performance ofits fully supervised equivalent. For most datasets, the per-formance of zero-shot classifiers still underperform fully su-pervised classifiers by 10% to 25%, suggesting that there is still plenty of headroom for improving CLIP's task-learningand zero-shot transfer capabilities.There is a positive correlation of 0.82 (p-value < 10-6)between zero-shot performance and fully supervised perfor-"
-  },
-  {
-    "type": "header",
-    "bbox": [
-      2129,
-      193,
-      2166,
-      219
-    ],
-    "text": "10"
-  },
-  {
-    "type": "figure",
-    "bbox": [
-      1193,
-      263,
-      2172,
-      1082
-    ],
-    "text": "100STL10908070KiHatesf/Memesdl60FER201350S40FGVCAircraftKITTI Distance30CLEVRCountsr = 0.82202030405060708090100Linear Probe CLIP Performance"
-  },
-  {
-    "type": "text",
-    "bbox": [
-      1227,
-      1138,
-      2167,
-      1389
-    ],
-    "text": "Figure 8. Zero-shot performance is correlated with linear probe performance but still mostly sub-optimal. Comparingzero-shot and linear probe performance across datasets shows astrong correlation with zero-shot performance mostly shifted 10 to 25 points lower. On only 5 datasets does zero-shot performanceapproach linear probe performance (\u22643 point difference)."
-  },
-  {
-    "type": "text",
-    "bbox": [
-      1227,
-      1468,
-      2168,
-      2166
-    ],
-    "text": " mance, suggesting that CLIP is relatively consistent at con-necting underlying representation and task learning to zero-shot transfer. However, zero-shot CLIP only approachesfully supervised performance on 5 datasets: STL10, CI-FAR10, Food101, OxfordPets, and Caltech101. On all 5datasets, both zero-shot accuracy and fully supervised accu-racy are over 90%. This suggests that CLIP may be moreeffective at zero-shot transfer for tasks where its underly-ing representations are also high quality. The slope of alinear regression model predicting zero-shot performance as a function of fully supervised performance estimates thatfor every 1% improvement in fully supervised performance, zero-shot performance improves by 1.28%. However, the95th-percentile confidence intervals still include values ofless than 1 (0.93-1.79)."
-  },
-  {
-    "type": "text",
-    "bbox": [
-      1227,
-      2214,
-      2168,
-      2862
-    ],
-    "text": " Over the past few years, empirical studies of deep learningsystems have documented that performance is predictable asa function of important quantities such as training computeand dataset size (Hestness et al., 2017; Kaplan et al., 2020).The GPT family of models has so far demonstrated consis-tent improvements in zero-shot performance across a 1000x increase in training compute. In Figure 9, we check whetherthe zero-shot performance of CLIP follows a similar scaling pattern. We plot the average error rate of the 5 ResNet CLIP models across 39 evaluations on 36 different datasets andfind that a similar log-log linear scaling trend holds for CLIPacross a 44x increase in model compute. While the overalltrend is smooth, we found that performance on individualevaluations can be much noisier. We are unsure whether"
-  }
-][
-  {
-    "type": "figure",
-    "bbox": [
-      221,
-      257,
-      1151,
-      1240
-    ],
-    "text": "SST2+23.6Country211+22.7HatefulMemes+18.8StanfordCars+15.9GTSRB+14.7SUN397+6.5Kinetics700+6.2RESISC45+5.1FER2013Food1013.9FGVCAircraft3.2UCF1013.1KITTI DistanceBirdsnap1.4Flowers102+1.4Caltech101+1.3EuroSAT+0.9MNIST0.6DTD+0.5VOC2007+0.5STL10+0.0OxfordPets0.50.8CIFAR10PatchCamelyon1.2CIFAR1002.4CLEVRCounts3.0ImageNet-105101520-5025\u25b3 Score (%)"
-  },
-  {
-    "type": "figure_caption",
-    "bbox": [
-      292,
-      1264,
-      1102,
-      1300
-    ],
-    "text": "\u25b3 Score (%)Logistic Regression on CLIP vs. EfficientNet L2 NS"
-  },
-  {
-    "type": "text",
-    "bbox": [
-      219,
-      1364,
-      1155,
-      1527
-    ],
-    "text": "Figure 11. CLIP's features outperform the features of the bestImageNet model on a wide variety of datasets. Fitting a linearclassifier on CLIP's features outperforms using the Noisy StudentEfficientNet-L2 on 21 out of 27 datasets."
-  },
-  {
-    "type": "title",
-    "bbox": [
-      221,
-      1581,
-      607,
-      1619
-    ],
-    "text": "low for both approaches."
-  },
-  {
-    "type": "title",
-    "bbox": [
-      219,
-      1682,
-      977,
-      1712
-    ],
-    "text": " 3.3. Robustness to Natural Distribution Shift"
-  },
-  {
-    "type": "text",
-    "bbox": [
-      218,
-      1757,
-      1161,
-      2601
-    ],
-    "text": " In 2015, it was announced that a deep learning model ex- ceeded human performance on the ImageNet test set (Heet al., 2015). However, research in the subsequent yearshas repeatedly found that these models still make many sim-ple mistakes (Dodge & Karam, 2017; Geirhos et al., 2018;Alcorn et al., 2019), and new benchmarks testing these sys-tems has often found their performance to be much lowerthan both their ImageNet accuracy and human accuracy(Recht et al., 2019; Barbu et al., 2019). What explains this discrepancy? Various ideas have been suggested and stud-ied (Ilyas et al., 2019; Geirhos et al., 2020). A commontheme of proposed explanations is that deep learning modelsare exceedingly adept at finding correlations and patternswhich hold across their training dataset and thus improvein-distribution performance. However many of these corre.lations and patterns are actually spurious and do not hold for Other distributions and result in large drops in performance on other datasets."
-  },
-  {
-    "type": "text",
-    "bbox": [
-      220,
-      2640,
-      1158,
-      2867
-    ],
-    "text": "We caution that, to date, most of these studies limit theirevaluation to models trained on ImageNet. Recalling thetopic of discussion, it may be a mistake to generalize toofar from these initial findings. To what degree are thesefailures attributable to deep learning, ImageNet, or some"
-  },
-  {
-    "type": "header",
-    "bbox": [
-      2129,
-      193,
-      2163,
-      218
-    ],
-    "text": "13"
-  },
-  {
-    "type": "text",
-    "bbox": [
-      1226,
-      277,
-      2169,
-      1438
-    ],
-    "text": "combination of the two? CLIP models, which are trained vianatural language supervision on a very large dataset and arecapable of high zero-shot performance, are an opportunityto investigate this question from a different angle.Taori et al. (2020) is a recent comprehensive study mov-ing towards quantifying and understanding these behaviorsfor ImageNet models. Taori et al. (2020) study how the performance of ImageNet models change when evaluatedon natural distribution shifts. They measure performanceon a set of 7 distribution shifts: ImageNetV2 (Recht et al.2019), ImageNet Sketch (Wang et al., 2019), Youtube-BB and ImageNet-Vid (Shankar et al., 2019), ObjectNet (Barbuet al., 2019), ImageNet Adversarial (Hendrycks et al., 2019),and ImageNet Rendition (Hendrycks et al., 2020a). They distinguish these datasets, which all consist of novel imagescollected from a variety of sources, from synthetic distri- bution shifts such as ImageNet-C (Hendrycks & Dietterich,2019), Stylized ImageNet (Geirhos et al., 2018), or adver-sarial attacks (Goodfellow et al., 2014) which are created byperturbing existing images in various ways. They proposethis distinction because in part because they find that while several techniques have been demonstrated to improve per-formance on synthetic distribution shifts, they often fail to yield consistent improvements on natural distributions.3"
-  },
-  {
-    "type": "text",
-    "bbox": [
-      1227,
-      1473,
-      2170,
-      1893
-    ],
-    "text": "Across these collected datasets, the accuracy of ImageNetmodels drop well below the expectation set by the Ima-geNet validation set. For the following summary discussionwe report average accuracy across all 7 natural distributionshift datasets and average accuracy across the correspond-ing class subsets of ImageNet unless otherwise specified.Additionally, for Youtube-BB and ImageNet-Vid, which have two different evaluation settings, we use the average of pm-0 and pm-10 accuracy."
-  },
-  {
-    "type": "text",
-    "bbox": [
-      1226,
-      1934,
-      2168,
-      2645
-    ],
-    "text": "A ResNet-101 makes 5 times as many mistakes when eval-uated on these natural distribution shifts compared to the ImageNet validation set. Encouragingly however, Taori et al.(2020) find that accuracy under distribution shift increases predictably with ImageNet accuracy and is well modeledas a linear function of logit-transformed accuracy. Taoriet al. (2020) use this finding to propose that robustnessanalysis should distinguish between effective and relativerobustness. Effective robustness measures improvements in accuracy under distribution shift above what is predictedby the documented relationship between in-distribution andout-of-distribution accuracy. Relative robustness captures any improvement in out-of-distribution accuracy. Taori et al.(2020) argue that robustness techniques should aim to im- prove both effective robustness and relative robustness."
-  },
-  {
-    "type": "text",
-    "bbox": [
-      1230,
-      2675,
-      2166,
-      2815
-    ],
-    "text": "Almost all models studied in Taori et al. (2020) are trained3We refer readers to Hendrycks et al. (2020a) for additional experiments and discussion on this claim."
-  }
-][
-  {
-    "type": "header",
-    "bbox": [
       292,
       193,
       1189,
-      225
+      224
     ],
-    "text": "Learning Transferable Visual Models From Natural Language Supervision"
-  },
-  {
-    "type": "reference",
-    "bbox": [
-      220,
-      274,
-      1161,
-      1374
-    ],
-    "text": "Tian, Y., Krishnan, D., and Isola, P. Contrastive multiviewcoding. arXiv preprint arXiv:1906.05849, 2019.Tian, Y., Wang, Y., Krishnan, D., Tenenbaum, J. B., andIsola, P. Rethinking few-shot image classification: agood embedding is all you need?arXiv preprintarXiv:2003.11539, 2020.Torralba, A., Fergus, R., and Freeman, W. T. 80 million tinyimages: A large data set for nonparametric object andscene recognition. IEEE transactions on pattern analysisand machine intelligence, 30(11):1958-1970, 2008.Touvron, H., Vedaldi, A., Douze, M., and J\u00e9gou, H. Fix-ing the train-test resolution discrepancy. In Advances inneural information processing systems, pp. 8252-8262,2019.Varadarajan, J. and Odobez, J.-M. Topic models for sceneanalysis and abnormality detection. In 2009 IEEE 12thInternational Conference on Computer Vision Workshops,ICCV Workshops, pp. 1338-1345. IEEE, 2009.Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones,L., Gomez, A. N., Kaiser, L., and Polosukhin, I. Atten-tion is all you need. In Advances in neural information"
+    "text": "Learning Transferable Visual Models From Natural Language Supervision."
   },
   {
     "type": "text",
     "bbox": [
-      253,
-      1483,
-      1162,
-      2213
+      219,
+      277,
+      776,
+      314
     ],
-    "text": "Veeling, B. S., Linmans, J., Winkens, J., Cohen, T., andWelling, M. Rotation equivariant CNNs for digital pathol-ogy. June 2018.Virtanen, P., Gommers, R., Oliphant, T. E., Haberland, M.,Reddy, T., Cournapeau, D., Burovski, E., Peterson, P.,Weckesser, W., Bright, J., van der Walt, S. J., Brett, M.,Wilson, J., Millman, K. J., Mayorov, N., Nelson, A. R. J.,Jones, E., Kern, R., Larson, E., Carey, C. J., Polat, I.,Feng, Y., Moore, E. W., VanderPlas, J., Laxalde, D.,Perktold, J., Cimrman, R., Henriksen, I., Quintero, E. A.,Harris, C. R., Archibald, A. M., Ribeiro, A. H., Pedregosa,F., van Mulbregt, P., and SciPy 1.0 Contributors. SciPy1.0: Fundamental Algorithms for Scientific Computingin Python. Nature Methods, 17:261-272, 2020. doi:10.1038/s41592-019-0686-2."
-  },
-  {
-    "type": "reference",
-    "bbox": [
-      229,
-      2256,
-      1162,
-      2431
-    ],
-    "text": "Vo, N., Jacobs, N., and Hays, J. Revisiting im2gps in thedeep learning era. In Proceedings of the IEEE Interna-tional Conference on Computer Vision, pp. 2621-2630,2017."
-  },
-  {
-    "type": "reference",
-    "bbox": [
-      225,
-      2472,
-      1159,
-      2866
-    ],
-    "text": "Wang, A., Singh, A., Michael, J., Hill, F., Levy, O., andBowman, S. R. Glue: A multi-task benchmark and anal-ysis platform for natural language understanding. arXivpreprint arXiv:1804.07461, 2018.Wang, H., Ge, S., Lipton, Z., and Xing, E. P. Learning ro-bust global representations by penalizing local predictivepower. In Advances in Neural Information ProcessingSystems, pp. 10506-10518, 2019."
+    "text": "F. Model Hyperparameters."
   },
   {
     "type": "header",
     "bbox": [
-      2129,
-      193,
-      2163,
+      2126,
+      192,
+      2165,
       218
     ],
-    "text": "35"
-  },
-  {
-    "type": "reference",
-    "bbox": [
-      1242,
-      281,
-      2168,
-      570
-    ],
-    "text": "Wang, H., Lu, P., Zhang, H., Yang, M., Bai, X., Xu, Y., He,M., Wang, Y., and Liu, W. All you need is boundary: To-ward arbitrary-shaped text spotting. In Proceedings of theAAAI Conference on Artificial Intelligence, volume 34,pPp. 12160-12167, 2020.Wang, J., Markert, K., and Everingham, M. Learning mod-"
-  },
-  {
-    "type": "reference",
-    "bbox": [
-      1228,
-      736,
-      2168,
-      864
-    ],
-    "text": "Weston, J., Bengio, S., and Usunier, N. Large scale im- age annotation: learning to rank with joint word-imageembeddings. Machine learning, 81(1):21-35, 2010."
-  },
-  {
-    "type": "reference",
-    "bbox": [
-      1228,
-      913,
-      2170,
-      1039
-    ],
-    "text": "Weston, J. E. Dialog-based language learning. In Advances in Neural Information Processing Systems, pp. 829-837,2016."
-  },
-  {
-    "type": "reference",
-    "bbox": [
-      1229,
-      1096,
-      2168,
-      1269
-    ],
-    "text": "Weyand, T., Kostrikov, I., and Philbin, J. Planet-photo geolo-cation with convolutional neural networks. In EuropeanConference on Computer Vision, pp. 37-55. Springer,2016."
-  },
-  {
-    "type": "reference",
-    "bbox": [
-      1230,
-      1317,
-      2171,
-      1452
-    ],
-    "text": "Wu, Y., Kirillov, A., Massa, F., Lo, W.-Y., and Gir-shick, R.Detectron2.https://github.com/facebookresearch/detectron2,2019."
-  },
-  {
-    "type": "text",
-    "bbox": [
-      1228,
-      1503,
-      2169,
-      1632
-    ],
-    "text": "Wu, Z., Xiong, Y, Yu, S., and Lin, D. Unsupervised featurelearning via non-parametric instance-level discrimination.arXiv preprint arXiv:1805.01978, 2018."
-  },
-  {
-    "type": "text",
-    "bbox": [
-      1235,
-      1721,
-      2167,
-      2585
-    ],
-    "text": "Xie, Q., Luong, M.-T, Hovy, E., and Le, Q. V. Self-trainingwith noisy student improves imagenet classification. InProceedings of the IEEE/CVF Conference on ComputerVision and Pattern Recognition, pp. 10687-10698, 2020.Arcas,B. A.,M.,and Todorov,Mitchell,yA.Physiognomy's new clothes.2017.URLhttps://medium.com/@blaisea/physiognomys-new-clothes-f2d4b59fdd6a.Yang, Z., Lu, Y., Wang, J., Yin, X., Florencio, D., Wang,L., Zhang, C., Zhang, L., and Luo, J. Tap: Text-awarepre-training for text-vqa and text-caption. arXiv preprintarXiv:2012.04638, 2020.Yogatama, D., d'Autume, C. d. M., Connor, J., Kocisky,T., Chrzanowski, M., Kong, L., Lazaridou, A., Ling, W.,Yu, L., Dyer, C., et al. Learning and evaluating generallinguistic intelligence. arXiv preprint arXiv: 1901.11373,2019."
-  },
-  {
-    "type": "reference",
-    "bbox": [
-      1235,
-      2640,
-      2170,
-      2861
-    ],
-    "text": "Young, P., Lai, A., Hodosh, M., and Hockenmaier, J. Fromimage descriptions to visual denotations: New similaritymetrics for semantic inference over event descriptions.Transactions of the Association for Computational Lin-guistics, 2:67-78, 2014."
-  }
-][
-  {
-    "type": "header",
-    "bbox": [
-      228,
-      193,
-      1124,
-      225
-    ],
-    "text": "Learning Transferable Visual Models From Natural Language Supervision"
+    "text": "48."
   },
   {
     "type": "table",
     "bbox": [
-      218,
-      311,
-      1188,
-      611
+      705,
+      360,
+      1661,
+      904
     ],
     "text": ""
   },
   {
-    "type": "text",
+    "type": "table_caption",
     "bbox": [
-      220,
-      666,
-      1159,
-      997
+      892,
+      936,
+      1496,
+      970
     ],
-    "text": "Table 8. CelebA Zero-Shot Top-1 Identity Recognition Accuracymirrors recent developments in natural language processing,in which recent large language models trained on Internet data often exhibit a surprising ability to provide informa-tion related to relatively minor public figures (Brown et al.,2020)."
+    "text": " Table 18. Common CLIP hyperparameters."
   },
   {
-    "type": "text",
+    "type": "table",
     "bbox": [
-      220,
-      1034,
-      1161,
-      1637
+      372,
+      1044,
+      2024,
+      1399
     ],
-    "text": "We found that the model had 59.2% top-1 accuracy outof 100 possible classes for \u201cin the wild\u2019 8k celebrity im-ages. However, this performance dropped to 43.3% whenwe increased our class sizes to 1k celebrity names. Thisperformance is not competitive when compared to produc-tion level models such as Google's Celebrity Recognition(Google). However, what makes these results noteworthy isthat this analysis was done using only zero-shot identifica-tion capabilities based on names inferred from pre-trainingdata - we didn't use any additional task-specific dataset, andso the (relatively) strong results further indicate that beforedeploying multimodal models, people will need to carefullystudy them for behaviors in a given context and domain."
-  },
-  {
-    "type": "text",
-    "bbox": [
-      219,
-      1665,
-      1161,
-      2185
-    ],
-    "text": "CLIP offers significant benefit for tasks that have relativelylittle data given its zero-shot capabilities. However, largedatasets and high performing supervised models exist formany in-demand surveillance tasks such as facial recogni-tion. As a result, CLIP's comparative appeal for such usesis low. Additionally, CLIP is not designed for commonsurveillance-relevant tasks like object detection and seman-tic segmentation. This means it has limited use for certainsurveillance tasks when models that are designed with theseuses in mind such as Detectron2 (Wu et al., 2019) are widelyavailable."
-  },
-  {
-    "type": "text",
-    "bbox": [
-      219,
-      2227,
-      1160,
-      2595
-    ],
-    "text": "However, CLIP does unlock a certain aspect of usabilitygiven how it removes the need for training data. Thus, CLIPand similar models could enable bespoke, niche surveillanceuse cases for which no well-tailored models or datasets exist,and could lower the skill requirements to build such appli-cations. As our experiments show, ZS CLIP displays non-trivial, but not exceptional, performance on a few surveil-lance relevant tasks today."
-  },
-  {
-    "type": "title",
-    "bbox": [
-      219,
-      2660,
-      512,
-      2691
-    ],
-    "text": "7.3. Future Work"
-  },
-  {
-    "type": "text",
-    "bbox": [
-      222,
-      2735,
-      1159,
-      2868
-    ],
-    "text": "This preliminary analysis is intended to illustrate some ofthe challenges that general purpose computer vision modelspose and to give a glimpse into their biases and impacts."
-  },
-  {
-    "type": "header",
-    "bbox": [
-      2128,
-      192,
-      2163,
-      216
-    ],
-    "text": "25"
-  },
-  {
-    "type": "text",
-    "bbox": [
-      1226,
-      281,
-      2166,
-      818
-    ],
-    "text": "We hope that this work motivates future research on thecharacterization of the capabilities, shortcomings, and biases of such models, and we are excited to engage with theresearch community on such questions.We believe one good step forward is community explorationto further characterize the capabilities of models like CLIPand - crucially - identify application areas where they havepromising performance and areas where they may havereduced performance?. This process of characterization canhelp researchers increase the likelihood models are usedbeneficially by:"
-  },
-  {
-    "type": "text",
-    "bbox": [
-      1272,
-      893,
-      2166,
-      1025
-    ],
-    "text": "\u00b7 Identifying potentially beneficial downstream uses ofmodels early in the research process, enabling otherresearchers to think about applications."
-  },
-  {
-    "type": "text",
-    "bbox": [
-      1272,
-      1067,
-      2169,
-      1204
-    ],
-    "text": "\u00b7 Surfacing tasks with significant sensitivity and a largeset of societal stakeholders, which may call for inter-vention by policymakers."
-  },
-  {
-    "type": "text",
-    "bbox": [
-      1271,
-      1251,
-      2165,
-      1377
-    ],
-    "text": "\u00b7 Better characterizing biases in models, alerting otherresearchers to areas of concern and areas for interven--tions."
-  },
-  {
-    "type": "title",
-    "bbox": [
-      1268,
-      1428,
-      2170,
-      1561
-    ],
-    "text": "\u00b7 Creating suites of tests to evaluate systems like CLIPon, so we can better characterize model capabilitiesearlier in the development cycle."
-  },
-  {
-    "type": "text",
-    "bbox": [
-      1270,
-      1611,
-      2158,
-      1689
-    ],
-    "text": "\u00b7 Identifying potential failure modes and areas for furtherwork."
-  },
-  {
-    "type": "text",
-    "bbox": [
-      1228,
-      1765,
-      2166,
-      1851
-    ],
-    "text": "We plan to contribute to this work, and hope this analysis provides some motivating examples for subsequent research."
-  },
-  {
-    "type": "title",
-    "bbox": [
-      1230,
-      1923,
-      1561,
-      1960
-    ],
-    "text": "8. Related Work"
-  },
-  {
-    "type": "text",
-    "bbox": [
-      1228,
-      2008,
-      2168,
-      2710
-    ],
-    "text": "Any model that leverages written, spoken, signed or any other form of human language as part of its training signalis arguably using natural language as a source of supervi-sion. This is an admittedly extremely broad area and coversmost work in the field of distributional semantics includingtopic models (Blei et al., 2003), word, sentence, and para- graph vectors (Mikolov et al., 2013; Kiros et al., 2015; Le &Mikolov, 2014), and language models (Bengio et al., 2003).It also includes much of the broader field of NLP that dealswith predicting or modeling sequences of natural languagein some way. Work in NLP intentionally leveraging naturallanguage supervision in the form of explanations, feedback,instructions, and advice for tasks such as classification (asopposed to the commonly used representation of supervisionas a set of arbitrarily encoded discrete category labels) has"
+    "text": ""
   },
   {
     "type": "reference",
     "bbox": [
-      1224,
-      2751,
-      2167,
-      2863
+      904,
+      1432,
+      1487,
+      1465
     ],
-    "text": "\u00b0A model could be unfit for use due to inadequate performanceor due to the inappropriateness of AI use in the application areaitself."
-  }
-][
-  {
-    "type": "header",
-    "bbox": [
-      228,
-      193,
-      1125,
-      224
-    ],
-    "text": "Learning Transferable Visual Models From Natural Language Supervision"
+    "text": " Table 19. CLIP-ResNet hyperparameters."
   },
   {
-    "type": "text",
+    "type": "table",
     "bbox": [
-      302,
-      282,
-      1168,
-      313
+      339,
+      1522,
+      2038,
+      1851
     ],
-    "text": "Linear probe average over Kornblith et al.'s 12 datasets"
+    "text": ""
   },
   {
-    "type": "figure",
+    "type": "reference",
     "bbox": [
-      201,
-      306,
-      1170,
-      1205
-    ],
-    "text": "Linear probe average over Kornblith et al.'s 12 datasets90L/14@336pxL/14.\u2605RN50x64L2-475\u2606L2-80085B/16WRN50x16..FixResRN50x4B/32x48R152R152x4RN50Wres50x1YR152x475MResNet152ResNet50tMoCo-v2?100101102Forward-pass GFLOPs/image "
-  },
-  {
-    "type": "figure_caption",
-    "bbox": [
-      557,
-      1195,
       928,
-      1224
+      1878,
+      1368,
+      1913
     ],
-    "text": "Forward-pass GFLOPs/image "
-  },
-  {
-    "type": "header",
-    "bbox": [
-      2129,
-      192,
-      2164,
-      217
-    ],
-    "text": "12"
-  },
-  {
-    "type": "figure",
-    "bbox": [
-      1205,
-      278,
-      2168,
-      1228
-    ],
-    "text": "Linear probe average over all 27 datasetsL/14@336px85.\u2605L/14RN50x64\u2606RN50x16B/16\u2606L2-800RN50x4B7-NSSRN1016FixResR152x3RN50\u00d74875R152x4\u25b3viT-H/14res50x1lR152x4MoCo-v2MResNet15270ResNet50t100101102Forward-pass GFLOPs/image"
-  },
-  {
-    "type": "figure",
-    "bbox": [
-      517,
-      1325,
-      1940,
-      1499
-    ],
-    "text": "CLIP-ViT Instagram-pretrained\u2605IViT (ImageNet-21k)\u2606]CLIP-ResNetSimCLRv21BiT-M EfficientNet-NoisyStudentBYOL\u2192 BiT-S+-+\u2014 EfficientNetMoCo\u2014\u2014 ResNet"
-  },
-  {
-    "type": "text",
-    "bbox": [
-      217,
-      1552,
-      2168,
-      1816
-    ],
-    "text": "Figure 10. Linear probe performance of CLIP models in comparison with state-of-the-art computer vision models, includingEfficientNet (Tan & Le, 2019; Xie et al., 2020), MoCo (Chen et al., 2020d), Instagram-pretrained ResNeXt models (Mahajan et al., 2018;Touvron et al., 2019), BiT (Kolesnikov et al., 2019), ViT (Dosovitskiy et al., 2020), SimCLRv2 (Chen et al., 2020c), BYOL (Grill et al.2020), and the original ResNet models (He et al., 2016b). (Left) Scores are averaged over 12 datasets studied by Kornblith et al. (2019).(Right) Scores are averaged over 27 datasets that contain a wider variety of distributions. Dotted lines indicate models fine-tuned orevaluated on images at a higher-resolution than pre-training. See Table 10 for individual scores and Figure 20 for plots for each dataset."
-  },
-  {
-    "type": "text",
-    "bbox": [
-      219,
-      1895,
-      1159,
-      2545
-    ],
-    "text": "On this broader evaluation suite, the benefits of CLIP aremore clear. All CLIP models, regardless of scale, outper-form all evaluated systems in terms of compute efficiency.The improvement in average score of the best model overprevious systems increases from 2.6% to 5%. We also findthat self-supervised systems do noticeably better on ourbroader evaluation suite. For instance, while SimCLRv2still underperforms BiT-M on average on the 12 datasetsof Kornblith et al. (2019), SimCLRv2 outperforms BiT-Mon our 27 dataset evaluation suite. These findings suggestcontinuing to expand task diversity and coverage in orderto better understand the \u201cgeneral' performance of systems.We suspect additional evaluation efforts along the lines ofVTAB to be valuable."
-  },
-  {
-    "type": "text",
-    "bbox": [
-      222,
-      2590,
-      1158,
-      2860
-    ],
-    "text": " In addition to the aggregate analysis above, we visualize per-dataset differences in the performance of the best CLIPmodel and the best model in our evaluation suite acrossall 27 datasets in Figure 11. CLIP outperforms the NoisyStudent EfficientNet-L2 on 21 of the 27 datasets. CLIPimproves the most on tasks which require OCR (SST2"
-  },
-  {
-    "type": "text",
-    "bbox": [
-      1227,
-      1895,
-      2168,
-      2837
-    ],
-    "text": "and HatefulMemes), geo-localization and scene recognition(Country211, SUN397), and activity recognition in videos (Kinetics700 and UCF101). In addition CLIP also doesmuch better on fine-grained car and traffic sign recognition(Stanford Cars and GTSRB). This may reflect a problemwith overly narrow supervision in ImageNet. A result suchas the 14.7% improvement on GTSRB could be indicative of an issue with ImageNet-1K, which has only a single la- bel for all traffic and street signs. This could encourage a supervised representation to collapse intra-class detailsand hurt accuracy on a fine-grained downstream task. As mentioned, CLIP still underperforms the EfficientNet onseveral datasets. Unsurprisingly, the dataset that the Effi- cientNet does best relative to CLIP on is the one it was trained on: ImageNet. The EffcientNet also slightly outper-forms CLIP on low-resolution datasets such as CIFAR10and CIFAR10o. We suspect this is at least partly due to thelack of scale-based data augmentation in CLIP. The Effi-cientNet also does slightly better on PatchCamelyon andCLEVRCounts, datasets where overall performance is still"
-  }
-][
-  {
-    "type": "header",
-    "bbox": [
-      228,
-      193,
-      1125,
-      224
-    ],
-    "text": "Learning Transferable Visual Models From Natural Language Supervision"
-  },
-  {
-    "type": "text",
-    "bbox": [
-      302,
-      282,
-      1168,
-      313
-    ],
-    "text": "Linear probe average over Kornblith et al.'s 12 datasets"
-  },
-  {
-    "type": "figure",
-    "bbox": [
-      201,
-      306,
-      1170,
-      1205
-    ],
-    "text": "Linear probe average over Kornblith et al.'s 12 datasets90L/14@336pxL/14.\u2605RN50x64L2-475\u2606L2-80085B/16WRN50x16..FixResRN50x4B/32x48R152R152x4RN50Wres50x1YR152x475MResNet152ResNet50tMoCo-v2?100101102Forward-pass GFLOPs/image "
-  },
-  {
-    "type": "figure_caption",
-    "bbox": [
-      557,
-      1195,
-      928,
-      1224
-    ],
-    "text": "Forward-pass GFLOPs/image "
-  },
-  {
-    "type": "header",
-    "bbox": [
-      2129,
-      192,
-      2164,
-      217
-    ],
-    "text": "12"
-  },
-  {
-    "type": "figure",
-    "bbox": [
-      1205,
-      278,
-      2168,
-      1228
-    ],
-    "text": "Linear probe average over all 27 datasetsL/14@336px85.\u2605L/14RN50x64\u2606RN50x16B/16\u2606L2-800RN50x4B7-NSSRN1016FixResR152x3RN50\u00d74875R152x4\u25b3viT-H/14res50x1lR152x4MoCo-v2MResNet15270ResNet50t100101102Forward-pass GFLOPs/image"
-  },
-  {
-    "type": "figure",
-    "bbox": [
-      517,
-      1325,
-      1940,
-      1499
-    ],
-    "text": "CLIP-ViT Instagram-pretrained\u2605IViT (ImageNet-21k)\u2606]CLIP-ResNetSimCLRv21BiT-M EfficientNet-NoisyStudentBYOL\u2192 BiT-S+-+\u2014 EfficientNetMoCo\u2014\u2014 ResNet"
-  },
-  {
-    "type": "text",
-    "bbox": [
-      217,
-      1552,
-      2168,
-      1816
-    ],
-    "text": "Figure 10. Linear probe performance of CLIP models in comparison with state-of-the-art computer vision models, includingEfficientNet (Tan & Le, 2019; Xie et al., 2020), MoCo (Chen et al., 2020d), Instagram-pretrained ResNeXt models (Mahajan et al., 2018;Touvron et al., 2019), BiT (Kolesnikov et al., 2019), ViT (Dosovitskiy et al., 2020), SimCLRv2 (Chen et al., 2020c), BYOL (Grill et al.2020), and the original ResNet models (He et al., 2016b). (Left) Scores are averaged over 12 datasets studied by Kornblith et al. (2019).(Right) Scores are averaged over 27 datasets that contain a wider variety of distributions. Dotted lines indicate models fine-tuned orevaluated on images at a higher-resolution than pre-training. See Table 10 for individual scores and Figure 20 for plots for each dataset."
-  },
-  {
-    "type": "text",
-    "bbox": [
-      219,
-      1895,
-      1159,
-      2545
-    ],
-    "text": "On this broader evaluation suite, the benefits of CLIP aremore clear. All CLIP models, regardless of scale, outper-form all evaluated systems in terms of compute efficiency.The improvement in average score of the best model overprevious systems increases from 2.6% to 5%. We also findthat self-supervised systems do noticeably better on ourbroader evaluation suite. For instance, while SimCLRv2still underperforms BiT-M on average on the 12 datasetsof Kornblith et al. (2019), SimCLRv2 outperforms BiT-Mon our 27 dataset evaluation suite. These findings suggestcontinuing to expand task diversity and coverage in orderto better understand the \u201cgeneral' performance of systems.We suspect additional evaluation efforts along the lines ofVTAB to be valuable."
-  },
-  {
-    "type": "text",
-    "bbox": [
-      222,
-      2590,
-      1158,
-      2860
-    ],
-    "text": " In addition to the aggregate analysis above, we visualize per-dataset differences in the performance of the best CLIPmodel and the best model in our evaluation suite acrossall 27 datasets in Figure 11. CLIP outperforms the NoisyStudent EfficientNet-L2 on 21 of the 27 datasets. CLIPimproves the most on tasks which require OCR (SST2"
-  },
-  {
-    "type": "text",
-    "bbox": [
-      1227,
-      1895,
-      2168,
-      2837
-    ],
-    "text": "and HatefulMemes), geo-localization and scene recognition(Country211, SUN397), and activity recognition in videos (Kinetics700 and UCF101). In addition CLIP also doesmuch better on fine-grained car and traffic sign recognition(Stanford Cars and GTSRB). This may reflect a problemwith overly narrow supervision in ImageNet. A result suchas the 14.7% improvement on GTSRB could be indicative of an issue with ImageNet-1K, which has only a single la- bel for all traffic and street signs. This could encourage a supervised representation to collapse intra-class detailsand hurt accuracy on a fine-grained downstream task. As mentioned, CLIP still underperforms the EfficientNet onseveral datasets. Unsurprisingly, the dataset that the Effi- cientNet does best relative to CLIP on is the one it was trained on: ImageNet. The EffcientNet also slightly outper-forms CLIP on low-resolution datasets such as CIFAR10and CIFAR10o. We suspect this is at least partly due to thelack of scale-based data augmentation in CLIP. The Effi-cientNet also does slightly better on PatchCamelyon andCLEVRCounts, datasets where overall performance is still"
+    "text": " Table 20. CLIP-ViT hyperparameters."
   }
 ]

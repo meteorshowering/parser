@@ -1,23 +1,345 @@
 [
   {
     "figure_per_eassy": 1,
-    "page": "11.img",
+    "page": "1",
     "figure_per_page": 1,
     "addr": "./figures/CLIP/1.jpg",
-    "context": "Forward-pass GFLOPs/image \n"
+    "context": "Figure 1. Summary of our approach. While standard image models jointly train an image feature extractor and a linear classifier to predict.some label, CLIP jointly trains an image encoder and a text encoder to predict the correct pairings of a batch of (image, text) training.examples. At test time the learned text encoder synthesizes a zero-shot linear classifier by embedding the names or descriptions of the.target dataset's classes..\n"
   },
   {
     "figure_per_eassy": 2,
-    "page": "11.img",
-    "figure_per_page": 2,
+    "page": "2",
+    "figure_per_page": 1,
     "addr": "./figures/CLIP/2.jpg",
-    "context": "Figure 10. Linear probe performance of CLIP models in comparison with state-of-the-art computer vision models, includingEfficientNet (Tan & Le, 2019; Xie et al., 2020), MoCo (Chen et al., 2020d), Instagram-pretrained ResNeXt models (Mahajan et al., 2018;Touvron et al., 2019), BiT (Kolesnikov et al., 2019), ViT (Dosovitskiy et al., 2020), SimCLRv2 (Chen et al., 2020c), BYOL (Grill et al.2020), and the original ResNet models (He et al., 2016b). (Left) Scores are averaged over 12 datasets studied by Kornblith et al. (2019).(Right) Scores are averaged over 27 datasets that contain a wider variety of distributions. Dotted lines indicate models fine-tuned orevaluated on images at a higher-resolution than pre-training. See Table 10 for individual scores and Figure 20 for plots for each dataset."
+    "context": "Figure 2. CLIP is much more efficient at zero-shot transfer.than our image caption baseline. Although highly expressive,.we found that transformer-based language models are relatively.weak at zero-shot ImageNet classification. Here, we see that it.learns 3x slower than a baseline which predicts a bag-of-words.(BoW) encoding of the text (Joulin et al., 2016). Swapping the.prediction objective for the contrastive objective of CLIP further.improves efficiency another 4x..\n"
   },
   {
     "figure_per_eassy": 3,
-    "page": "11.img",
-    "figure_per_page": 3,
+    "page": "4",
+    "figure_per_page": 1,
     "addr": "./figures/CLIP/3.jpg",
-    "context": "Figure 10. Linear probe performance of CLIP models in comparison with state-of-the-art computer vision models, includingEfficientNet (Tan & Le, 2019; Xie et al., 2020), MoCo (Chen et al., 2020d), Instagram-pretrained ResNeXt models (Mahajan et al., 2018;Touvron et al., 2019), BiT (Kolesnikov et al., 2019), ViT (Dosovitskiy et al., 2020), SimCLRv2 (Chen et al., 2020c), BYOL (Grill et al.2020), and the original ResNet models (He et al., 2016b). (Left) Scores are averaged over 12 datasets studied by Kornblith et al. (2019).(Right) Scores are averaged over 27 datasets that contain a wider variety of distributions. Dotted lines indicate models fine-tuned orevaluated on images at a higher-resolution than pre-training. See Table 10 for individual scores and Figure 20 for plots for each dataset.\n"
+    "context": "# extract feature representations of each modality.I-f = image_encoder(I) #[n, d-i].T_f = text_encoder(T) #[n, d-t].\n"
+  },
+  {
+    "figure_per_eassy": 4,
+    "page": "6",
+    "figure_per_page": 1,
+    "addr": "./figures/CLIP/4.jpg",
+    "context": "Table 1. Comparing CLIP to prior zero-shot transfer image classi-.fication results. CLIP improves performance on all three datasets.by a large amount. This improvement reflects many differences.in the 4 years since the development of Visual N-Grams (Li et al.,.2017)..\n"
+  },
+  {
+    "figure_per_eassy": 5,
+    "page": "6",
+    "figure_per_page": 2,
+    "addr": "./figures/CLIP/5.jpg",
+    "context": "Model GFLOPs.\nFigure 4. Prompt engineering and ensembling improve zero-.shot performance. Compared to the baseline of using contextless.class names, prompt engineering and ensembling boost zero-shot.classification performance by almost 5 points on average across.36 datasets. This improvement is similar to the gain from using.4 times more compute with the baseline zero-shot method but is.\"free\u201d when amortized over many predictions.."
+  },
+  {
+    "figure_per_eassy": 6,
+    "page": "7",
+    "figure_per_page": 1,
+    "addr": "./figures/CLIP/6.jpg",
+    "context": "Zero-Shot CLIP vs. Linear Probe on ResNet50.\nFigure 5. Zero-shot CLIP is competitive with a fully super-.vised baseline. Across a 27 dataset eval suite, a zero-shot CLIP.classifier outperforms a fully supervised linear classifier fitted on. ResNet-50 features on 16 datasets, including ImageNet.."
+  },
+  {
+    "figure_per_eassy": 7,
+    "page": "8",
+    "figure_per_page": 1,
+    "addr": "./figures/CLIP/7.jpg",
+    "context": "# of labeled training examples per class.\nFigure 6. Zero-shot CLIP outperforms few-shot linear probes..Zero-shot CLIP matches the average performance of a 4-shot linear.classifier trained on the same feature space and nearly matches the.best results of a 16-shot linear classifier across publicly available.models. For both BiT-M and SimCLRv2, the best performing.model is highlighted. Light gray lines are other models in the eval.suite. The 20 datasets with at least 16 examples per class were.used in this analysis.."
+  },
+  {
+    "figure_per_eassy": 8,
+    "page": "9",
+    "figure_per_page": 1,
+    "addr": "./figures/CLIP/8.jpg",
+    "context": "# of labeled examples per class.required to match zero-shot.\nFigure 7. The data efficiency of zero-shot transfer varies.widely. Calculating the number of labeled examples per class.a linear classifier on the same CLIP feature space requires to match.the performance of the zero-shot classifier contextualizes the ef-.fectiveness of zero-shot transfer. Values are estimated based on.log-linear interpolation of 1, 2, 4, 8, 16-shot and fully supervised.results. Performance varies widely from still underperforming a. one-shot classifier on two datasets to matching an estimated 184.labeled examples per class.."
+  },
+  {
+    "figure_per_eassy": 9,
+    "page": "9",
+    "figure_per_page": 2,
+    "addr": "./figures/CLIP/9.jpg",
+    "context": "Figure 8. Zero-shot performance is correlated with linear. probe performance but still mostly sub-optimal. Comparing.zero-shot and linear probe performance across datasets shows a.strong correlation with zero-shot performance mostly shifted 10 to. 25 points lower. On only 5 datasets does zero-shot performance.approach linear probe performance (\u22643 point difference)..\n"
+  },
+  {
+    "figure_per_eassy": 10,
+    "page": "10",
+    "figure_per_page": 1,
+    "addr": "./figures/CLIP/10.jpg",
+    "context": "Figure 9. Zero-shot CLIP performance scales smoothly as a.function of model compute. Across 39 evals on 36 different.datasets, average zero-shot error is well modeled by a log-log lin-.ear trend across a 44x range of compute spanning 5 different CLIP.models. Lightly shaded lines are performance on individual evals,.showing that performance is much more varied despite the smooth.overall trend..\n"
+  },
+  {
+    "figure_per_eassy": 11,
+    "page": "11",
+    "figure_per_page": 1,
+    "addr": "./figures/CLIP/11.jpg",
+    "context": "Forward-pass GFLOPs/image .\n"
+  },
+  {
+    "figure_per_eassy": 12,
+    "page": "11",
+    "figure_per_page": 2,
+    "addr": "./figures/CLIP/12.jpg",
+    "context": "Figure 10. Linear probe performance of CLIP models in comparison with state-of-the-art computer vision models, including.EfficientNet (Tan & Le, 2019; Xie et al., 2020), MoCo (Chen et al., 2020d), Instagram-pretrained ResNeXt models (Mahajan et al., 2018;.Touvron et al., 2019), BiT (Kolesnikov et al., 2019), ViT (Dosovitskiy et al., 2020), SimCLRv2 (Chen et al., 2020c), BYOL (Grill et al..2020), and the original ResNet models (He et al., 2016b). (Left) Scores are averaged over 12 datasets studied by Kornblith et al. (2019)..(Right) Scores are averaged over 27 datasets that contain a wider variety of distributions. Dotted lines indicate models fine-tuned or.evaluated on images at a higher-resolution than pre-training. See Table 10 for individual scores and Figure 20 for plots for each dataset.."
+  },
+  {
+    "figure_per_eassy": 13,
+    "page": "11",
+    "figure_per_page": 3,
+    "addr": "./figures/CLIP/13.jpg",
+    "context": "Figure 10. Linear probe performance of CLIP models in comparison with state-of-the-art computer vision models, including.EfficientNet (Tan & Le, 2019; Xie et al., 2020), MoCo (Chen et al., 2020d), Instagram-pretrained ResNeXt models (Mahajan et al., 2018;.Touvron et al., 2019), BiT (Kolesnikov et al., 2019), ViT (Dosovitskiy et al., 2020), SimCLRv2 (Chen et al., 2020c), BYOL (Grill et al..2020), and the original ResNet models (He et al., 2016b). (Left) Scores are averaged over 12 datasets studied by Kornblith et al. (2019)..(Right) Scores are averaged over 27 datasets that contain a wider variety of distributions. Dotted lines indicate models fine-tuned or.evaluated on images at a higher-resolution than pre-training. See Table 10 for individual scores and Figure 20 for plots for each dataset..\n"
+  },
+  {
+    "figure_per_eassy": 14,
+    "page": "12",
+    "figure_per_page": 1,
+    "addr": "./figures/CLIP/14.jpg",
+    "context": "\u25b3 Score (%).Logistic Regression on CLIP vs. EfficientNet L2 NS.\nFigure 11. CLIP's features outperform the features of the best.ImageNet model on a wide variety of datasets. Fitting a linear.classifier on CLIP's features outperforms using the Noisy Student.EfficientNet-L2 on 21 out of 27 datasets.."
+  },
+  {
+    "figure_per_eassy": 15,
+    "page": "13",
+    "figure_per_page": 1,
+    "addr": "./figures/CLIP/15.jpg",
+    "context": ""
+  },
+  {
+    "figure_per_eassy": 16,
+    "page": "13",
+    "figure_per_page": 2,
+    "addr": "./figures/CLIP/16.jpg",
+    "context": "Figure 12. CLIP's features are more robust to task shift when compared to models pre-trained on ImageNet. For both dataset.splits, the transfer scores of linear probes trained on the representations of CLIP models are higher than other models with similar.ImageNet performance. This suggests that the representations of models trained on ImageNet are somewhat overfit to their task.."
+  },
+  {
+    "figure_per_eassy": 17,
+    "page": "13",
+    "figure_per_page": 3,
+    "addr": "./figures/CLIP/17.jpg",
+    "context": "Figure 12. CLIP's features are more robust to task shift when compared to models pre-trained on ImageNet. For both dataset.splits, the transfer scores of linear probes trained on the representations of CLIP models are higher than other models with similar.ImageNet performance. This suggests that the representations of models trained on ImageNet are somewhat overfit to their task..\nor fine-tuned on the ImageNet dataset. Returning to the. discussion in the introduction to this section - is training.or adapting to the ImageNet dataset distribution the cause.of the observed robustness gap? Intuitively, a zero-shot.model should not be able to exploit spurious correlations. or patterns that hold only on a specific distribution, since it.is not trained on that distribution. 4 Thus it is reasonable.to expect zero-shot models to have much higher effective.robustness. In Figure 13, we compare the performance of.zero-shot CLIP with existing ImageNet models on natural.distribution shifts. All zero-shot CLIP models improve.effective robustness by a large amount and reduce the size. of the gap between ImageNet accuracy and accuracy under.distribution shift by up to 75%.."
+  },
+  {
+    "figure_per_eassy": 18,
+    "page": "14",
+    "figure_per_page": 1,
+    "addr": "./figures/CLIP/18.jpg",
+    "context": "Figure 13. Zero-shot CLIP is much more robust to distribution shift than standard ImageNet models. (Left) An ideal robust model.(dashed line) performs equally well on the ImageNet distribution and (.1 on other natural image distributions. Zero-shot CLIP models shrink.this \u201crobustness gap\" by up to 75%. Linear fits on logit transformed values are shown with bootstrap estimated 95% confidence intervals..(Right) Visualizing distribution shift for bananas, a class shared across 5 of the 7 natural distribution shift datasets. The performance of.the best zero-shot CLIP model, ViT-L/14@336px, is compared with a model that has the same performance on the ImageNet validation.set, ResNet-101..\n"
+  },
+  {
+    "figure_per_eassy": 19,
+    "page": "15",
+    "figure_per_page": 1,
+    "addr": "./figures/CLIP/19.jpg",
+    "context": " Average on class subsampled ImageNet (top-1, %).\n"
+  },
+  {
+    "figure_per_eassy": 20,
+    "page": "16",
+    "figure_per_page": 1,
+    "addr": "./figures/CLIP/20.jpg",
+    "context": "70.75.80.85.90. Average on class subsampled ImageNet (top-1, %).\nFigure 15. Few-shot CLIP also increases effective robustness.compared to existing ImageNet models but is less robust than.zero-shot CLIP. Minimizing the amount of ImageNet training.data used for adaption increases effective robustness at the cost of.decreasing relative robustness. 16-shot logistic regression CLIP.matches zero-shot CLIP on ImageNet, as previously reported in.Figure 7, but is less robust.."
+  },
+  {
+    "figure_per_eassy": 21,
+    "page": "16",
+    "figure_per_page": 2,
+    "addr": "./figures/CLIP/21.jpg",
+    "context": "Table 2. Comparison of human performance on Oxford IIT Pets..As in Parkhi et al. (2012), the metric is average per-class classfica-.tion accuracy. Most of the gain in performance when going from.the human zero shot case to the human one shot case is on images.that participants were highly uncertain on. \u201cGuesses\"\u2019 refers to.restricting the dataset to where participants selected an answer.other than \u201cI don't know\", the \u201cmajority vote\" is taking the most .frequent (exclusive of ties) answer per image..\n"
+  },
+  {
+    "figure_per_eassy": 22,
+    "page": "17",
+    "figure_per_page": 1,
+    "addr": "./figures/CLIP/22.jpg",
+    "context": "Figure 16. The hardest problems for CLIP also tend to be the hard-.est problems for humans. Here we rank image categories by diffi-.culty for CLIP as measured as probability of the correct label..\n"
+  },
+  {
+    "figure_per_eassy": 23,
+    "page": "18",
+    "figure_per_page": 1,
+    "addr": "./figures/CLIP/23.jpg",
+    "context": "Figure 17. Few statistically significant improvements in accuracy due to detected data overlap. (Left) While several datasets have.up to \u00b120% apparent differences in zero-shot accuracy on detected overlapping vs clean examples only 5 datasets out of 35 total have.99.5% Clopper-Pearson confidence intervals that exclude a 0% accuracy difference. 2 of these datasets do worse on overlapping data..(Right) Since the percentage of detected overlapping examples is almost always in the single digits, the overall test accuracy gain due to. overlap is much smaller with the largest estimated increase being only 0.6% on Birdsnap. Similarly, for only 6 datasets are the accuracy.improvements statistically significant when calculated using a one-sided binomial test..\n"
+  },
+  {
+    "figure_per_eassy": 24,
+    "page": "20",
+    "figure_per_page": 1,
+    "addr": "./figures/CLIP/24.jpg",
+    "context": ""
+  },
+  {
+    "figure_per_eassy": 25,
+    "page": "20",
+    "figure_per_page": 2,
+    "addr": "./figures/CLIP/25.jpg",
+    "context": ""
+  },
+  {
+    "figure_per_eassy": 26,
+    "page": "20",
+    "figure_per_page": 3,
+    "addr": "./figures/CLIP/26.jpg",
+    "context": ""
+  },
+  {
+    "figure_per_eassy": 27,
+    "page": "20",
+    "figure_per_page": 4,
+    "addr": "./figures/CLIP/27.jpg",
+    "context": ""
+  },
+  {
+    "figure_per_eassy": 28,
+    "page": "20",
+    "figure_per_page": 5,
+    "addr": "./figures/CLIP/28.jpg",
+    "context": ""
+  },
+  {
+    "figure_per_eassy": 29,
+    "page": "21",
+    "figure_per_page": 1,
+    "addr": "./figures/CLIP/29.jpg",
+    "context": "Table 6. Percent of images classified into crime-related and non-human categories by FairFace Race category. The label set included 7. FairFace race categories each for men and women (for a total of 14), as well as 3 crime-related categories and 4 non-human categories..\n"
+  },
+  {
+    "figure_per_eassy": 30,
+    "page": "21",
+    "figure_per_page": 2,
+    "addr": "./figures/CLIP/30.jpg",
+    "context": "Table 7. Percent of images classified into crime-related and non-human categories by FairFace Age category, showing comparison between.results obtained using a default label set and a label set to which the label 'child\u2019 has been added. The default label set included 7 FairFace.race categories each for men and women (for a total of 14), 3 crime-related categories and 4 non-human categories..\nAdditionally, we test the performance of the LR CLIP and.ZS CLIP models across intersectional race and gender cate-.gories as they are defined in the FairFace dataset. We find.that model performance on gender classification is above. 95% for all race categories. Table 5 summarizes these re-.sults.."
+  },
+  {
+    "figure_per_eassy": 31,
+    "page": "23",
+    "figure_per_page": 1,
+    "addr": "./figures/CLIP/31.jpg",
+    "context": "Figure 18. CLIP performance on Member of Congress images when given the combined returned label set for the images from Google. Cloud Vision, Amazon Rekognition and Microsoft Azure Computer Vision. The 20 most gendered labels for men and women were.identified with x2 tests with the threshold at O.5%. Labels are sorted by absolute frequencies. Bars denote the percentage of images for a. certain label by gender..\n"
+  },
+  {
+    "figure_per_eassy": 32,
+    "page": "24",
+    "figure_per_page": 1,
+    "addr": "./figures/CLIP/32.jpg",
+    "context": "Table 8. CelebA Zero-Shot Top-1 Identity Recognition Accuracy.mirrors recent developments in natural language processing,.in which recent large language models trained on Internet. data often exhibit a surprising ability to provide informa-.tion related to relatively minor public figures (Brown et al.,.2020)..\n"
+  },
+  {
+    "figure_per_eassy": 33,
+    "page": "37",
+    "figure_per_page": 1,
+    "addr": "./figures/CLIP/33.jpg",
+    "context": ""
+  },
+  {
+    "figure_per_eassy": 34,
+    "page": "37",
+    "figure_per_page": 2,
+    "addr": "./figures/CLIP/34.jpg",
+    "context": "Figure 19. Two example images from the Rendered SST2 dataset.\n"
+  },
+  {
+    "figure_per_eassy": 35,
+    "page": "38",
+    "figure_per_page": 1,
+    "addr": "./figures/CLIP/35.jpg",
+    "context": ""
+  },
+  {
+    "figure_per_eassy": 36,
+    "page": "39",
+    "figure_per_page": 1,
+    "addr": "./figures/CLIP/36.jpg",
+    "context": ""
+  },
+  {
+    "figure_per_eassy": 37,
+    "page": "40",
+    "figure_per_page": 1,
+    "addr": "./figures/CLIP/37.jpg",
+    "context": "Figure 20. Linear probe performance plotted for each of the 27 datasets, using the data from Table 10..\n"
+  },
+  {
+    "figure_per_eassy": 38,
+    "page": "41",
+    "figure_per_page": 1,
+    "addr": "./figures/CLIP/38.jpg",
+    "context": "Figure 21. Visualization of predictions from 36 CLIP zero-shot classifiers. All examples are random with the exception of reselecting.Hateful Memes to avoid offensive content. The predicted probability of the top 5 classes is shown along with the text used to represent.the class. When more than one template is used, the first template is shown. The ground truth label is colored green while an incorrect.prediction is colored orange..\n"
+  },
+  {
+    "figure_per_eassy": 39,
+    "page": "42",
+    "figure_per_page": 1,
+    "addr": "./figures/CLIP/39.jpg",
+    "context": ""
+  },
+  {
+    "figure_per_eassy": 40,
+    "page": "42",
+    "figure_per_page": 2,
+    "addr": "./figures/CLIP/40.jpg",
+    "context": "Figure 22. CLIP's zero-shot performance compared to linear-probe ResNet performance.\n"
+  },
+  {
+    "figure_per_eassy": 41,
+    "page": "43",
+    "figure_per_page": 1,
+    "addr": "./figures/CLIP/41.jpg",
+    "context": " Table 12. CLIP performs similarly when trained on only..Comparing a ResNet-50 trained on only.YFCC100M..YFCCi0oM with a same sized subset of WIT shows simi-.lar average performance and number of wins on zero shot and.linear classifier evals. However, large differences in dataset. specific performance occur. We include performance on the 3.datasets where YFCC does best and worst compared to WIT.according to a linear probe in order to highlight this as well as. aggregate performance across all linear and zero-shot evals and.the canonical ImageNet dataset..\n"
+  },
+  {
+    "figure_per_eassy": 42,
+    "page": "45",
+    "figure_per_page": 1,
+    "addr": "./figures/CLIP/42.jpg",
+    "context": "Table 13. CLIP improves zero-shot retrieval and is competitive with the best fine-tuned result on Flickr30k text retrieval. Bold. indicates best overall performance while an underline indicates best in category performance (zero-shot or fine-tuned). For all other .models, best results from the paper are reported regardless of model size / variant. MSCOCO performance is reported on the 5k test set..a(Li et al., 2020a) b(Chen et al., 2019) (Gan et al., 2020) d(Li et al., 2020b) e(Yu et al., 2020) f (Li et al., 2017) 9(Qi et al., 2020).\n"
+  },
+  {
+    "figure_per_eassy": 43,
+    "page": "45",
+    "figure_per_page": 2,
+    "addr": "./figures/CLIP/43.jpg",
+    "context": " Table 14. OCR performance on 5 datasets. All metrics are accuracy. on the test set except for Hateful Memes which reports ROC AUC. on the dev set. Single model SOTA reported to best of knowledge..ES Best reports the best performance across the 56 non-CLIP.models in our evaluation suite. a(Assiri, 2020) *(Jaderberg et al.,.2015) (Wang et al., 2020) (Lippe et al., 2020) f Jaderberg et al.,.2014) 9(Wang et al., 2018) (Xie et al., 2020) *(Mahajan et al.,.2018).\n"
+  },
+  {
+    "figure_per_eassy": 44,
+    "page": "45",
+    "figure_per_page": 3,
+    "addr": "./figures/CLIP/44.jpg",
+    "context": "Table 15. Action recognition performance on 3 video datasets. Sin-.gle model SOTA reported to best of knowledge. Note that linear. CLIP and linear NS ENet-L2 are trained and evaluated on a single.frame subsampled version of each dataset and not directly compa-.rable to prior work. On Kinetics-700, we report the ActivityNet.competition metric which is the average of top-1 and top-5 per-.formance. \u03b1(Kalfa0glu et al., 2020) b(Lu et al., 2020) c(Xie et al.,. 2020) d(Miech et al., 2020b) e(Carreira et al., 2019) f(Alayrac.et al., 2020).\naction classification datasets which measure the ability of a. model to recognize verbs. In Table 15 we report results on.UCF-101 (Soomro et al., 2012) and Kinetics-700 (Carreira.et al., 2019), two common datasets for the task. Unfortu-.nately, our CPU based linear classifier takes a prohibitively.long time to evaluate on a video dataset due to the very large.number of training frames. To deal with this, we aggres-.sively sub-sample each video to only a single center frame,.effectively turning it into an image classification dataset. As a result, our reported performance in a linear evaluation.setting likely under estimates performance by a moderate.amount.."
+  },
+  {
+    "figure_per_eassy": 45,
+    "page": "46",
+    "figure_per_page": 1,
+    "addr": "./figures/CLIP/45.jpg",
+    "context": " Despite this handicap, CLIP features transfer surprisingly.well to this task. CLIP matches the best prior result on UCF-.101 in a linear probe evaluation setting and also outperforms.all other models in our evaluation suite. On Kinetics-700,. CLIP also outperforms the fine-tuned I3D baseline from the. original paper. Since it does not require a training stage,.we report CLIP's zero-shot performance when averaging.predictions across all frames. CLIP also performs well in.this setting and on Kinetics-700 its performance is within.1% of the fully supervised I3D baseline which is trained.on 545000 labeled videos. Encouraged by these results, we.also measure CLIP's performance on the recently introduced.RareAct dataset (Miech et al., 2020a) which was designed.to measure zero-shot recognition of unusual actions like.\"hammering a phone\u201d and \u201cdrilling an egg\". CLIP improves.over the prior state of the art, a S3D model trained on auto-.matically extracted captions from 100 million instructional.videos, by 10 points..\n"
+  },
+  {
+    "figure_per_eassy": 46,
+    "page": "46",
+    "figure_per_page": 2,
+    "addr": "./figures/CLIP/46.jpg",
+    "context": "Table 17. Geolocalization performance on the IM2GPS test set..Metric is percent of images localized within a given radius. Models. are ordered by average performance. \u03b1(Muller-Budack et al., 2018).b(Hongsuck Seo et al., 2018) (Vo et al., 2017) \u00b0(Weyand et al.,.2016).\n"
+  },
+  {
+    "figure_per_eassy": 47,
+    "page": "47",
+    "figure_per_page": 1,
+    "addr": "./figures/CLIP/47.jpg",
+    "context": ""
+  },
+  {
+    "figure_per_eassy": 48,
+    "page": "47",
+    "figure_per_page": 2,
+    "addr": "./figures/CLIP/48.jpg",
+    "context": ""
+  },
+  {
+    "figure_per_eassy": 49,
+    "page": "47",
+    "figure_per_page": 3,
+    "addr": "./figures/CLIP/49.jpg",
+    "context": ""
   }
 ]
