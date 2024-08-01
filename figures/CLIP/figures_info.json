@@ -1,0 +1,23 @@
+[
+  {
+    "figure_per_eassy": 1,
+    "page": "11.img",
+    "figure_per_page": 1,
+    "addr": "./figures/CLIP/1.jpg",
+    "context": "Forward-pass GFLOPs/image \n"
+  },
+  {
+    "figure_per_eassy": 2,
+    "page": "11.img",
+    "figure_per_page": 2,
+    "addr": "./figures/CLIP/2.jpg",
+    "context": "Figure 10. Linear probe performance of CLIP models in comparison with state-of-the-art computer vision models, includingEfficientNet (Tan & Le, 2019; Xie et al., 2020), MoCo (Chen et al., 2020d), Instagram-pretrained ResNeXt models (Mahajan et al., 2018;Touvron et al., 2019), BiT (Kolesnikov et al., 2019), ViT (Dosovitskiy et al., 2020), SimCLRv2 (Chen et al., 2020c), BYOL (Grill et al.2020), and the original ResNet models (He et al., 2016b). (Left) Scores are averaged over 12 datasets studied by Kornblith et al. (2019).(Right) Scores are averaged over 27 datasets that contain a wider variety of distributions. Dotted lines indicate models fine-tuned orevaluated on images at a higher-resolution than pre-training. See Table 10 for individual scores and Figure 20 for plots for each dataset."
+  },
+  {
+    "figure_per_eassy": 3,
+    "page": "11.img",
+    "figure_per_page": 3,
+    "addr": "./figures/CLIP/3.jpg",
+    "context": "Figure 10. Linear probe performance of CLIP models in comparison with state-of-the-art computer vision models, includingEfficientNet (Tan & Le, 2019; Xie et al., 2020), MoCo (Chen et al., 2020d), Instagram-pretrained ResNeXt models (Mahajan et al., 2018;Touvron et al., 2019), BiT (Kolesnikov et al., 2019), ViT (Dosovitskiy et al., 2020), SimCLRv2 (Chen et al., 2020c), BYOL (Grill et al.2020), and the original ResNet models (He et al., 2016b). (Left) Scores are averaged over 12 datasets studied by Kornblith et al. (2019).(Right) Scores are averaged over 27 datasets that contain a wider variety of distributions. Dotted lines indicate models fine-tuned orevaluated on images at a higher-resolution than pre-training. See Table 10 for individual scores and Figure 20 for plots for each dataset.\n"
+  }
+]

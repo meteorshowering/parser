@@ -8,8 +8,10 @@ import json
 
 table_engine = PPStructure(show_log=True)
 save_folder = './result/CLIP'
-figure_folder = './figures/CLIP'
+figure_folder = './figures/CLIP/'
 img_dir = './imgs'
+if not os.path.exists(figure_folder):
+    os.makedirs(figure_folder)
 
 files = os.listdir(img_dir)  
 # for fi in files:
@@ -21,7 +23,7 @@ files = os.listdir(img_dir)
 # for img in os.listdir(fi_d):
 #     img_path = os.path.join(fi_d,img)    #pdf to imgs
 figure_count = 0
-img_path = "imgs\CLIP\images_39.img"
+img_path = "imgs\CLIP\images_11.img"
 page_num =img_path.split('_')[1]
 
 img = cv2.imread(img_path)
@@ -30,7 +32,7 @@ result = table_engine(img)    #get layout
 # 保存在每张图片对应的子目录下
 h, w, _ = img.shape
 res = sorted_layout_boxes(result, w)   #这个函数是左右分栏的处理函数，厉害，效果很好
-#print(type(res))   sort之后的结果是list
+# print(res)  sort之后的结果是list
 
 #以下代码用来把table作为图片存下来
 figure_per_page = 0
@@ -46,25 +48,31 @@ for region in res:
             useful_info['text'] += region['res'][i]['text']
     print(useful_info['text'])
     res_useful.append(useful_info)
-# with open('test.json','a') as file: 
-#             json.dump(res_useful,file,indent=2)
-where_fig = 0
-for i in range(len(useful_info)):
-    if useful_info[i]['type'] == 'table' or useful_info[i]['type'] == 'figure':
+with open('test.json','a') as file: 
+            json.dump(res_useful,file,indent=2)
+
+for i in range(len(res_useful)):
+    if res_useful[i]['type'] == 'table' or res_useful[i]['type'] == 'figure':
         figure_info = {}
         figure_count += 1
         figure_per_page += 1
-        figure_img = img[useful_info[i]['bbox'][0]:useful_info[i]['bbox'][2],useful_info[i]['bbox'][1]:useful_info[i]['bbox'][3]]
-        figure_addr = os.path.join(figure_folder,str(figure_count),)
+        figure_img = img[res_useful[i]['bbox'][1]:res_useful[i]['bbox'][3],res_useful[i]['bbox'][0]:res_useful[i]['bbox'][2]]
+        figure_addr = figure_folder+str(figure_count)+'.jpg'
+        cv2.imwrite(figure_addr,figure_img)
         figure_info['figure_per_eassy'] = figure_count
         figure_info['page'] = page_num
         figure_info['figure_per_page'] = figure_per_page
-        
-    if region['type']=='table':
-        table_img = img[region['bbox'][0]:region['bbox'][2],region['bbox'][1]:region['bbox'][3]]
-        table_addr = os.path.join(figure_folder,)
-        cv2.imwrite('test.jpg',table_img)
-# print(figure_context)        
+        figure_info['addr'] = figure_addr
+        figure_info['context'] = ''
+        if res_useful[i+1]['type'] == 'figure_caption' or res_useful[i+1]['type'] == 'text':
+            figure_info['context'] += res_useful[i+1]['text']+'\n'
+        if res_useful[i+2]['type'] == 'text':
+            if "figure" in res_useful[i+2]['text'] or "Figure" in res_useful[i+2]['text'] or "table" in res_useful[i+2]['text'] or "Table" in res_useful[i+2]['text']:
+                figure_info['context'] += res_useful[i+2]['text']
+        figures_info.append(figure_info)
+figures_info_addr = figure_folder+'figures_info.json'
+with open(figures_info_addr,'w') as jsonfile:
+    json.dump(figures_info,jsonfile,indent=2)
         
         
 
